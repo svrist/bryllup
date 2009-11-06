@@ -1,0 +1,40 @@
+/*
+ IE 6, 5.5, 5 styles
+ Site: Nautica 13
+*/
+
+#nav a span, #testimonials-link span {
+ cursor: hand;
+}
+
+#header {
+ top: 1px;
+}
+
+#inner-wrapper, #content { 
+ height: 1%;
+}
+
+.box.left.welcome {
+ height: 457px;
+ heig\ht: 407px; 
+}
+
+.box.left.packages {
+ padding-bottom: 15px;
+}
+
+.box.left {
+ width: 268px;
+ wid\th: 230px; 
+}
+
+.box.left.packages {
+ width: 259px;
+ wid\th: 246px; 
+}
+
+.box.right {
+ width: 479px;
+ wid\th: 449px;
+}

@@ -1,0 +1,21 @@
+/*
+ Print styles
+ Site: Nautica 13
+*/
+
+body, #wrapper {
+ background-color: #fff;
+ color: #000;
+ font-size: 9pt;
+}
+
+#footer {
+ border-top: 1px solid #000;
+ font-size: 0.9em;
+ margin-top: 2em;
+ padding-top: 0.75em;
+}
+
+#nav, #testimonials-link, #gallery {
+ display: none;
+}

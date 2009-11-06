@@ -1,0 +1,21 @@
+/*
+ IE 7 styles
+ Site: Nautica 13
+*/
+
+#nav a span, #testimonials-link span {
+ cursor: hand;
+}
+
+#header {
+ z-index: 10;
+ top: 1px;
+}
+
+#inner-wrapper, #content { 
+ height: 1%;
+}
+
+.box.left.packages {
+ padding-bottom: 15px;
+}

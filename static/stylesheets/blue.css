@@ -1,0 +1,138 @@
+/*
+ Screen style    
+ Site: Nautica 13
+*/
+
+.box {
+ background-color: #DFF1EE;
+ color: #8D8D8D;
+}
+
+.box.left.welcome {
+ background-image: url(../images/bg/blue/welcome.jpg);
+ background-position: bottom left;
+ background-repeat: no-repeat;
+ padding-top: 18px; 
+}
+
+.box.left.welcome h2 {
+ margin-bottom: 0.75em;
+}
+
+#content {
+ background: transparent url(../images/bg/blue/content-bottom.gif) left bottom no-repeat;
+ color: #8D8D8D;
+ padding-bottom: 12px;
+}
+
+#content a {
+ background-color: transparent;
+ color: #555555;
+ text-decoration: none;
+}
+
+#content a:hover {
+ background-color: transparent;
+ color: #470F00;
+}
+
+#content h1, #content h2, #content h3 {
+ background-color: transparent;
+ color: #470F00;
+}
+
+#footer {
+ background-color: #DFF1EE;
+ background-image: none;
+ color: #684C35;
+ width: 716px;
+}
+
+#footer a {
+ background-color: transparent;
+ color: #684C35;
+}
+
+#footer a:hover {
+ background-color: transparent;
+ color: #CCCCCC;
+}
+
+#footer p {
+ background: #DFF1EE url(../images/bg/blue/footer-bottom.gif) bottom left no-repeat;
+ color: #684C35;
+}
+
+#inner-wrapper {
+ background: #D0E7E3 url(../images/bg/blue/inner-wrapper-top.gif) left top no-repeat;
+ color: #8D8D8D;
+}
+
+#nav a {
+ background-color: #DDF1EE;
+ color: #453121;
+}
+
+#nav a#nav01 span {
+ background-image: url(../images/nav/blue/01.gif);
+}
+
+#nav a#nav02 span {
+ background-image: url(../images/nav/blue/02.gif);
+}
+
+#nav a#nav03 span {
+ background-image: url(../images/nav/blue/03.gif);
+}
+
+#nav a#nav04 span{
+ background-image: url(../images/nav/blue/04.gif);
+}
+
+#nav a#nav04 {
+ width: 111px;
+}
+
+#nav a#nav05 span{
+ background-image: url(../images/nav/blue/05.gif);
+}
+
+#nav a#nav05 {
+ width: 109px;
+}
+
+#nav a:hover {
+ background-color: #D0E7E3;
+ color: #453121;
+}
+
+#original-events h1 span {
+ background-image: url(../images/titles/blue/original-events.gif);
+}
+
+#original-events img {
+ border: 5px solid #fff;
+}
+
+#testimonials-link {
+ height: 107px;
+ width: 29px;
+ left: -1px;
+}
+
+#testimonials-link a:hover span, #testimonials-link a.current span {
+ background-position: -29px 0;
+}
+
+#testimonials-link a:hover {
+ background-color: #DDF1EE;
+ color: #453121;
+}
+
+#testimonials-link span {
+ background-image: url(../images/nav/blue/testimonials.gif);
+}
+
+#wrapper {
+ width: 828px;
+}
