@@ -29,6 +29,12 @@ class MainHandler(BaseRequestHandler):
         tt = "class=\"current\""
         if site == "brylluppet":
             return {"nav2": tt}
+        elif site == "transport":
+            return {"nav3": tt}
+        elif site == "onsker":
+            return {"nav4": tt}
+        elif site == "overnatning":
+            return {"nav5": tt}
         else:
             return {"nav1" : tt}
 

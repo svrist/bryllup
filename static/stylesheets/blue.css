@@ -5,7 +5,7 @@
 
 .box {
  background-color: #DFF1EE;
- color: #8D8D8D;
+ color: #5D5D5D;
 }
 
 .box.left.welcome {
@@ -21,14 +21,14 @@
 
 #content {
  background: transparent url(../images/bg/blue/content-bottom.gif) left bottom no-repeat;
- color: #8D8D8D;
+ color: #9D9D9D;
  padding-bottom: 12px;
 }
 
 #content a {
  background-color: transparent;
  color: #555555;
- text-decoration: none;
+ text-decoration: underline;
 }
 
 #content a:hover {

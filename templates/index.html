@@ -2,11 +2,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta name="robots" content="index,follow" />
-<meta name="description" content="Design by STUDIO7DESIGNS for Arbutus Photography" />
-<meta name="keywords" content="" />
-<meta name="author" content="studio7designs.com" />
+<meta name="description" content="Bryllupsside for Søren og Susanne" />
+<meta name="author" content="Søren Vrist" />
 <meta name="copyright" content="" />
 <link rel="stylesheet" type="text/css" href="./static/stylesheets/common.css" media="screen, print, projection, handheld" />
 <link rel="stylesheet" type="text/css" href="./static/stylesheets/screen.css" media="screen, projection" />
@@ -26,26 +25,39 @@
 <body>
 <div id="wrapper">
   <div id="header">
-    <p id="logo"><a href="#"><img src="./static/images/logo/fuego.gif" alt="Fuego - fresh weddings and events" width="191" height="122" /></a></p>
+    <p id="logo"><a href="/"><img src="./static/images/logo/fuego.gif" alt="Søren og Susannes bryllupsside" width="191" height="122" /></a></p>
     <p id="to-content"><a href="#content">Skip to content</a></p>
     <ul id="nav">
       <li><a href="/" id="nav01" {{nav1}}>Start</a></li>
       <li><a href="/brylluppet" id="nav02" {{nav2}}>Bryllupet</a></li>
-      <li><a href="#" id="nav03" {{nav3}}>G&aelig;ster</a></li>
-      <li><a href="#" id="nav04" {{nav4}}>Services</a></li>
-      <li><a href="#" id="nav05" {{nav5}}>Contact</a></li>
+      <li><a href="/transport" id="nav03" {{nav3}}>Transport</a></li>
+      <li><a href="/onsker" id="nav04" {{nav4}}>Ønsker</a></li>
+      <li><a href="/overnatning" id="nav05" {{nav5}}>Overnatning</a></li>
     </ul>
   </div>
-  <!--<p id="testimonials-link"><a href="#">Testimonials<span></span></a></p>-->
   <div id="inner-wrapper">
     <div id="content">
       {% block content %}
       <div id="original-events">
-        <h1>Original, creative events on any budget<span></span></h1>
-        <img src="./static/images/photos/event.jpg" alt="Decorative image" width="469" height="417" /> </div>
+        <h1>Susanne og S&oslash;rens bryllup</h1>
+        <img src="./static/images/collage.jpg" alt="Sus og Søren Collage" width="460" height="460" /> </div>
       <div class="box left welcome">
-        <h2>Header</h2>
-        <p></p>
+        <h2>Hej!</h2>
+        <p>Her og via menuen foroven kan du finde alle de informationer du skal bruge som gæst til vores bryllup</p>
+        <hr>
+        <h2>Facts</h2>
+        <ul>
+          <li>Kirke: <a href="http://bit.ly/1jU4XU">Kirke Hvalsø Kirke</a></li>
+          <li>Tidspunkt: 8. maj 2010 kl 14:00</li>
+          <li>Festlokaler: Festfløjen på <a href="'http://www.sonnerupgaard.dk/">Sonnerupgaard Gods</a></li>
+          <li>Mellem kirken og festen vil der være kage og lidt boblende i festlokalerne</li>
+          <li>Fest hele natten for dem der gider</li>
+          <li>Mulighed for overnatning og brunch søndag</li>
+          <li>Gavekoordinator: </li>
+          <li>Toastmaster: </li>
+          <li>S.U. for overnatning: 1/1 2010</li>
+          <li>S.U. for festen: 1/4 2010</li>
+        </ul>
       </div>
     {% endblock %}
     </div>
