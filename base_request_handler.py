@@ -46,6 +46,7 @@ class BaseRequestHandler(webapp.RequestHandler):
         values.update(template_values)
         directory = os.path.dirname(__file__)
         path = os.path.join(directory,os.path.join('templates',template_name))
+        self.response.headers["content-type"] = "text/html; charset=iso-8859-1"
         self.response.out.write(template.render(path,values,debug=_DEBUG))
 
     def jsonout(self,status = "Ok",msg = None,format=(),**kwargs):
