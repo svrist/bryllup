@@ -4,12 +4,11 @@
 */
 
 .box {
- background-color: #DFF1EE;
- color: #5D5D5D;
+ background-color: #BB55BB;
 }
 
 .box.left.welcome {
- background-image: url(../images/bg/blue/welcome.jpg);
+ /*background-image: url(../images/bg/blue/welcome.jpg);*/
  background-position: bottom left;
  background-repeat: no-repeat;
  padding-top: 18px; 
@@ -20,14 +19,13 @@
 }
 
 #content {
- background: transparent url(../images/bg/blue/content-bottom.gif) left bottom no-repeat;
- color: #9D9D9D;
  padding-bottom: 12px;
+ color: #FFCCFF;
 }
 
 #content a {
  background-color: transparent;
- color: #555555;
+ color: #FFEEFF;
  text-decoration: underline;
 }
 
@@ -38,12 +36,11 @@
 
 #content h1, #content h2, #content h3 {
  background-color: transparent;
- color: #470F00;
+ color: #fff;
 }
 
 #footer {
- background-color: #DFF1EE;
- background-image: none;
+ background-color: #BB55BB;
  color: #684C35;
  width: 716px;
 }
@@ -59,35 +56,18 @@
 }
 
 #footer p {
- background: #DFF1EE url(../images/bg/blue/footer-bottom.gif) bottom left no-repeat;
- color: #684C35;
+ /*background: #DFF1EE url(../images/bg/blue/footer-bottom.gif) bottom left no-repeat;*/
+ 
+ color: #ffeeff;
 }
 
 #inner-wrapper {
- background: #D0E7E3 url(../images/bg/blue/inner-wrapper-top.gif) left top no-repeat;
- color: #8D8D8D;
 }
 
 #nav a {
- background-color: #DDF1EE;
- color: #453121;
+ background-color: #BB55BB;
 }
 
-#nav a#nav01 span {
- background-image: url(../images/nav/blue/01.gif);
-}
-
-#nav a#nav02 span {
- background-image: url(../images/nav/blue/02.gif);
-}
-
-#nav a#nav03 span {
- background-image: url(../images/nav/blue/03.gif);
-}
-
-#nav a#nav04 span{
- background-image: url(../images/nav/blue/04.gif);
-}
 
 #nav a#nav04 {
  width: 111px;
@@ -102,8 +82,7 @@
 }
 
 #nav a:hover {
- background-color: #D0E7E3;
- color: #453121;
+ background-color: #DD77DD;
 }
 
 #original-events h1 span {
@@ -120,19 +99,12 @@
  left: -1px;
 }
 
-#testimonials-link a:hover span, #testimonials-link a.current span {
- background-position: -29px 0;
-}
-
-#testimonials-link a:hover {
- background-color: #DDF1EE;
- color: #453121;
-}
-
-#testimonials-link span {
- background-image: url(../images/nav/blue/testimonials.gif);
-}
-
 #wrapper {
  width: 828px;
 }
+
+#nav a.current {
+ background-color: #AA44AA;
+ font-weight: bold;
+}
+

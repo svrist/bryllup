@@ -108,6 +108,6 @@ default_template_vars = { "logouturl" : users.create_logout_url('/'),
                          "user" : users.get_current_user(),
                          "loginurl" : users.create_login_url('/'),
                          "users" : users,
-                         "title": "Vores Bryllup",
+                         "title": "Susanne og S&oslash;rens bryllup",
                         }
 _DEBUG=True
