@@ -83,8 +83,9 @@ h2 {
 #footer {
  clear: both;
  font-family: Verdana, Geneva, lucida, sans-serif;
+ font-size: 0.4em;
  margin-left: 70px;
- width: 717px;
+ width: 517px;
 }
 
 #footer a {
@@ -97,7 +98,7 @@ h2 {
  /*background: #5A3F2A url(../images/bg/footer-bottom.gif) bottom left no-repeat;*/
  color: #FFeEff;
  margin: 0;
- padding: 10px;
+ padding: 8px;
  text-align: center;
 }
 
