@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+{% block content %}
+<div id="fullcontent" style="width: 502px; min-height: 320px; float:right;" class="box">
+  <h1>Gæsteliste</h1>
+  {% for d in gaester.items %}
+    <h2>{{d.0}}</h2>
+  <table width="90%" style="border: solid #fff;">
+    {% for p in d.1 %}
+    {%if forloop.counter0|divisibleby:"2"%}<tr>{%endif%}
+      <td>{{p}}</td>
+    {%if forloop.counter|divisibleby:"2"%}</tr>{%endif%}
+  {% endfor %}
+</table>
+    {% endfor %}
+{% endblock %}

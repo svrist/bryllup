@@ -35,6 +35,22 @@ class MainHandler(BaseRequestHandler):
             return {"nav4": tt}
         elif site == "overnatning":
             return {"nav5": tt}
+        elif site == "gaester":
+            ret = {}
+            ret["nav1"]= tt
+            g = {}
+            sv = []
+            ven = []
+            sus = [ "Mor, Nicoline, Josephine",
+                    "Doris og Frank",
+                   "Thora og Mortensen",
+                   "Karen og Jan",
+                   "Helle og Kalle"]
+            g["sus"]= sus
+            g["sv"]= sv
+            g["venner"] = ven
+            ret["gaester"] =  g
+            return ret
         else:
             return {"nav1" : tt}
 
