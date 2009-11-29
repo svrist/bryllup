@@ -23,6 +23,8 @@ import wsgiref.handlers
 from base_request_handler import BaseRequestHandler,main
 from google.appengine.ext import webapp
 
+webapp.template.register_template_library('django_hack')
+
 
 class MainHandler(BaseRequestHandler):
     def gencur(self,site):
@@ -34,22 +36,37 @@ class MainHandler(BaseRequestHandler):
         elif site == "onsker":
             return {"nav4": tt}
         elif site == "overnatning":
-            return {"nav5": tt}
-        elif site == "gaester":
+            dobbelt = 11
+            enkelt = 4
+            return {"nav5": tt, "dobbelt":dobbelt,"enkelt":enkelt}
+        elif site == "gaester" or site=="gaester2":
             ret = {}
             ret["nav1"]= tt
             g = {}
-            sv = []
-            ven = []
+            sv = ["Mor og Far",
+                  "Niels og Marie",
+                 "Anne og Thomas",
+                 "Eva",]
+            ven = ["Maja og Anders","Pernille","Heidi"]
             sus = [ "Mor, Nicoline, Josephine",
-                    "Doris og Frank",
-                   "Thora og Mortensen",
-                   "Karen og Jan",
-                   "Helle og Kalle"]
-            g["sus"]= sus
-            g["sv"]= sv
-            g["venner"] = ven
-            ret["gaester"] =  g
+                   "Malene og Michael",
+                   "Doris og Frank",
+                   "Thora og Mortensen, Pernille og Dorte",
+                   "Charlotte og Claus",
+                   "Ann-Mari og Mads",
+                   "Lars og Mie",
+                  ""]
+            if len(sus) % 2 != 0:
+                sus.append("")
+            if len(sv) % 2 != 0:
+                sv.append("")
+            if len(ven) % 2 != 0:
+                ven.append("")
+            g["Susanne"]= sus
+            g["S&oslash;ren"]= sv
+            g["Venner"] = ven
+            ret["gaesterdict"] =  g
+            ret["gaester"] =  ["Susanne","S&oslash;ren","Venner"]
             return ret
         else:
             return {"nav1" : tt}
