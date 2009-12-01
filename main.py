@@ -37,40 +37,11 @@ class MainHandler(BaseRequestHandler):
         elif site == "onsker":
             return {"nav4": tt}
         elif site == "overnatning":
-            dobbelt = 11
-            enkelt = 4
+            dobbelt = 10
+            enkelt = 2
             return {"nav5": tt, "dobbelt":dobbelt,"enkelt":enkelt}
         elif site == "gaester" or site=="gaester2":
-            ret = {}
-            ret["nav1"]= tt
-            g = {}
-            sv = ["Mor og Far",
-                  "Niels og Marie",
-                 "Anne og Thomas",
-                  "Torben og Lisbeth",
-                 "Eva",]
-            ven = ["Maja og Anders","Pernille","Heidi", "Mette og Rasmus",
-                   "Simon og Marit", "Tim","Louise"]
-            sus = [ "Mor, Nicoline, Josephine",
-                   "Malene og Michael",
-                   "Doris og Frank",
-                   "Thora og Mortensen, Pernille og Dorte",
-                   "Charlotte og Claus",
-                   "Ann-Mari og Mads",
-                   "Lars og Mie",
-                  ""]
-            if len(sus) % 2 != 0:
-                sus.append("")
-            if len(sv) % 2 != 0:
-                sv.append("")
-            if len(ven) % 2 != 0:
-                ven.append("")
-            g["Susanne"]= sus
-            g["S&oslash;ren"]= sv
-            g["Venner"] = ven
-            ret["gaesterdict"] =  g
-            ret["gaester"] =  ["Susanne","S&oslash;ren","Venner"]
-            return ret
+                       return ret
         else:
             return {"nav1" : tt}
 
@@ -80,22 +51,60 @@ class MainHandler(BaseRequestHandler):
         self.generate("%s.html"%site,self.gencur(site))
 
 class GaestHandler(BaseRequestHandler):
-  def get(self):
-    form = GaestForm()
-    gaester = Gaest.all()
-    self.generate("admin_gaest.html",{'form':form, 'gaester':gaester})
-  def post(self):
-    form = GaestForm(data=self.request.POST)
-    if form.is_valid():
-      form.save()
-      self.redirect("/admin/gaest")
+    def get(self):
+        self.enforce_admin()
+        vals = {}
+        form = GaestForm()
+        action = self.request.get('action')
+        if self.request.get("id"):
+            id = int(self.request.get("id"))
+            g = Gaest.get(db.Key.from_path("Gaest",id))
 
+        if action == "edit":
+            form = GaestForm(instance=g)
+            vals['id'] = id
+        elif action == "del":
+            g.delete()
 
+        gaester = Gaest.all().order("type")
+        vals['form'] = form
+        vals['gaester'] = gaester
+        self.generate("admin_gaest.html",vals)
+    def post(self):
+        form = GaestForm(data=self.request.POST)
+        if self.request.get('_id'):
+            id = int(self.request.get("_id"))
+            g = Gaest.get(db.Key.from_path("Gaest",id))
+            form = GaestForm(data=self.request.POST,instance=g)
+        else:
+            form = GaestForm(data=self.request.POST)
+
+        if form.is_valid():
+            form.save()
+        self.redirect("/admin/gaest")
+
+class GaestList(BaseRequestHandler):
+    def get(self):
+        ret = {}
+        tt = "class=\"current\""
+        ret["nav1"]= tt
+        g = {}
+        ret["gaester"] =  ["Susanne","S&oslash;ren","Venner"]
+        ret["gaesterdict"] = {}
+        for g in ret["gaester"]:
+            ret["gaesterdict"][g] = Gaest.all().\
+                    filter("type = ",g).\
+                    filter("meldttilbage =", True).\
+                    fetch(80)
+            if len(ret["gaesterdict"][g]) %2 != 0:
+                   ret["gaesterdict"][g].append("")
+        self.generate("gaester.html",ret)
 
 
 
 if __name__ == '__main__':
     application = webapp.WSGIApplication([
-      ('/admin/gaest',GaestHandler),
-      ('/(.*)', MainHandler)], debug=True)
+        ('/gaester',GaestList),
+        ('/admin/gaest',GaestHandler),
+        ('/(.*)', MainHandler)], debug=True)
     main(application)

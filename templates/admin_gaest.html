@@ -12,15 +12,27 @@
 <form method="POST">
   <table>
     {{ form }}
-    <tr><td colspan="2"><input type="submit"></td></tr>
+    <tr><td colspan="2">
+        {% if id %}<input type="hidden" name="_id" value="{{id}}" />{%endif%}
+        <input type="submit"></td></tr>
   </table>
 </form>
 </div>
+<hr />
 <div id="list">
-  <ul>
+  <table border="1" cellpadding="3">
   {% for g in gaester %}
-  <li>{{ g.navn }} - {{g.type}}{% if g.vaerelse %} - 
-  <span class="{% if g.betalt %}ok{%else%}missing{%endif%}">Værelse</span>{%endif%}</li>
+  {% ifchanged g.type %}
+  <tr><td colspan="5">{{g.type}}</td></tr>
+  {% endifchanged %}
+  <tr>
+    <td>
+      {% if g.meldttilbage %}<span class="ok">*</span>{%endif%}</td>
+    <td>{{ g.navn }}</td>
+    <td>{% if g.vaerelse %}
+      <span class="{% if g.betalt %}ok{%else%}missing{%endif%}">{{g.spaces}} Sengeplads(er)</span>{%endif%}</td>
+    <td><a href="/admin/gaest?action=edit&id={{g.key.id}}">edit</a>|<a href="/admin/gaest?action=del&id={{g.key.id}}">x</a></td>
+  </tr>
   {% endfor %}
 </ul>
 
