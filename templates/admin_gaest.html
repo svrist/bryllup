@@ -1,0 +1,28 @@
+{% extends "index_admin.html" %}
+{% block content %}
+<style>
+  .missing {
+    color: #FF0000;
+  }
+  .ok {
+    color: #00FF00;
+  }
+</style>
+<div id="form">
+<form method="POST">
+  <table>
+    {{ form }}
+    <tr><td colspan="2"><input type="submit"></td></tr>
+  </table>
+</form>
+</div>
+<div id="list">
+  <ul>
+  {% for g in gaester %}
+  <li>{{ g.navn }} - {{g.type}}{% if g.vaerelse %} - 
+  <span class="{% if g.betalt %}ok{%else%}missing{%endif%}">Værelse</span>{%endif%}</li>
+  {% endfor %}
+</ul>
+
+</div>
+{% endblock %}

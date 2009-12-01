@@ -22,6 +22,7 @@ import wsgiref.handlers
 
 from base_request_handler import BaseRequestHandler,main
 from google.appengine.ext import webapp
+from form import *
 
 webapp.template.register_template_library('django_hack')
 
@@ -76,8 +77,23 @@ class MainHandler(BaseRequestHandler):
             site="index"
         self.generate("%s.html"%site,self.gencur(site))
 
+class GaestHandler(BaseRequestHandler):
+  def get(self):
+    form = GaestForm()
+    gaester = Gaest.all()
+    self.generate("admin_gaest.html",{'form':form, 'gaester':gaester})
+  def post(self):
+    form = GaestForm(data=self.request.POST)
+    if form.is_valid():
+      form.save()
+      self.redirect("/admin/gaest")
+
+
+
+
 
 if __name__ == '__main__':
-    application = webapp.WSGIApplication([('/(.*)', MainHandler)],
-                                         debug=True)
+    application = webapp.WSGIApplication([
+      ('/admin/gaest',GaestHandler),
+      ('/(.*)', MainHandler)], debug=True)
     main(application)
