@@ -47,8 +47,10 @@ class MainHandler(BaseRequestHandler):
             sv = ["Mor og Far",
                   "Niels og Marie",
                  "Anne og Thomas",
+                  "Torben og Lisbeth",
                  "Eva",]
-            ven = ["Maja og Anders","Pernille","Heidi", "Mette og Rasmus", "Simon og Marit"]
+            ven = ["Maja og Anders","Pernille","Heidi", "Mette og Rasmus",
+                   "Simon og Marit", "Tim","Louise"]
             sus = [ "Mor, Nicoline, Josephine",
                    "Malene og Michael",
                    "Doris og Frank",
