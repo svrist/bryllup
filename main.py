@@ -14,11 +14,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-
-
-
 import wsgiref.handlers
+import logging
 
 from base_request_handler import BaseRequestHandler,main
 from google.appengine.ext import webapp
@@ -37,8 +34,9 @@ class MainHandler(BaseRequestHandler):
         elif site == "onsker":
             return {"nav4": tt}
         elif site == "overnatning":
-            dobbelt = 10
-            enkelt = 2
+            s = Seng.get()
+            dobbelt = s.double
+            enkelt = s.single
             return {"nav5": tt, "dobbelt":dobbelt,"enkelt":enkelt}
         elif site == "gaester" or site=="gaester2":
                        return ret
@@ -101,10 +99,22 @@ class GaestList(BaseRequestHandler):
         self.generate("gaester.html",ret)
 
 
+class SengHandler(BaseRequestHandler):
+
+  def get(self):
+    f = SengForm(instance=Seng.get())
+    self.generate("admin_seng.html",{'form':f})
+
+  def post(self):
+    f = SengForm(data=self.request.POST,instance=Seng.get())
+    if f.is_valid():
+      f.save()
+    self.redirect("/admin/seng")
 
 if __name__ == '__main__':
     application = webapp.WSGIApplication([
         ('/gaester',GaestList),
         ('/admin/gaest',GaestHandler),
+        ('/admin/seng',SengHandler),
         ('/(.*)', MainHandler)], debug=True)
     main(application)

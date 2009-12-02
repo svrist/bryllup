@@ -7,6 +7,9 @@
   .ok {
     color: #00FF00;
   }
+  .namehead {
+    font-weight: bold;
+  }
 </style>
 <div id="form">
 <form method="POST">
@@ -23,7 +26,7 @@
   <table border="1" cellpadding="3">
   {% for g in gaester %}
   {% ifchanged g.type %}
-  <tr><td colspan="5">{{g.type}}</td></tr>
+  <tr><td colspan="5" class="namehead">{{g.type}}</td></tr>
   {% endifchanged %}
   <tr>
     <td>

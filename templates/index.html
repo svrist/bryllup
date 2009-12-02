@@ -79,7 +79,9 @@ pageTracker._trackPageview();
   </div>
   <hr />
   <div id="footer">
-    <p>Copyright 2007 <a href="http://www.studio7designs.com">STUDIO7DESIGNS</a>  | Design by<a href="http://www.arbutusphotography.com"> Arbutus </a> </p>
+    <p>Copyright 2007 <a href="http://www.studio7designs.com">STUDIO7DESIGNS</a>  | Design by<a href="http://www.arbutusphotography.com"> Arbutus </a> 
+    {% if users.get_current_user %}<a href="{{logouturl}}" style="font-size:3em; color:#fff;">Logout</a>{%endif%}
+    </p>
   </div>
 </div>
 </body>

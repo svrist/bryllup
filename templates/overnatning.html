@@ -39,8 +39,8 @@
        <li>{{ enkelt }} enkeltværelser</li>
        <li>X opredninger</li>
      </ul>
-     
-</div>
+     {% if users.is_current_user_admin %}<a href="/admin/seng">Edit</a>{%endif%}  
+   </div>
 <div id="original-events" style="float: left; width: 200px; min-height: 320px">
   <img src="/static/images/sidebar.jpg" width="200" height="320">
 </div>

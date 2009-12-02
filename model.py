@@ -9,3 +9,15 @@ class Gaest(db.Model):
   vaerelse = db.BooleanProperty(default=False)
   betalt = db.BooleanProperty(default=False)
   type = db.StringProperty(required=True, default="Susanne",choices=['Susanne','S&oslash;ren','Venner'])
+
+class Seng(db.Model):
+  created = db.DateTimeProperty(auto_now_add=True)
+  updated = db.DateTimeProperty(auto_now=True)
+  double=db.IntegerProperty(required=True,default=18)
+  single=db.IntegerProperty(required=True,default=4)
+
+  @staticmethod
+  def get():
+    return Seng.get_or_insert("_the_single_")
+
+

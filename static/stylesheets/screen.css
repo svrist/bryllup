@@ -116,7 +116,7 @@ h2 {
 }
 
 #inner-wrapper {
- background: #3D2817 url(../images/bg/inner-wrapper-top.gif) left top no-repeat;
+ /*background: #3D2817 url(../images/bg/inner-wrapper-top.gif) left top no-repeat;*/
  color: #fff;
  margin: -1px 0 0 28px;
 }

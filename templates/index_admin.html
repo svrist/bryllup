@@ -4,11 +4,20 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>{{ title }}</title>
+<style>
+  a.real {
+    color: #888;
+  }
+  a.admin {
+    font-weight: bold;
+  }
+</style>
 </head>
 <body>
   <div id="menu">
-    <a href="/">Hovedsiden</a> - <a href="/gaester">Gæstelisten</a> -
-    <a href="/admin/gaest">Gæster</a>
+    <a href="/" class="real">Hovedsiden</a> | <a href="/gaester" class="real">Gæstelisten</a> -
+    <a href="/admin/gaest" class="admin">Gæster</a> |
+    <a href="/overnatning" class="real">Overnatning</a> - <a href="/admin/seng" class="admin">Seng</a>
   </div>
   <hr />
   <div id="content">
