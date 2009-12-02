@@ -1,0 +1,23 @@
+{% extends "index_admin.html" %}
+{% block content %}
+<style>
+  .missing {
+    color: #FF0000;
+  }
+  .ok {
+    color: #00FF00;
+  }
+  .namehead {
+    font-weight: bold;
+  }
+</style>
+<div id="form">
+<form method="POST">
+  <table>
+    {{ form }}
+    <tr><td colspan="2">
+        <input type="submit"></td></tr>
+  </table>
+</form>
+</div>
+{% endblock %}
