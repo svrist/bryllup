@@ -93,10 +93,17 @@ class GaestList(BaseRequestHandler):
             ret["gaesterdict"][g] = Gaest.all().\
                     filter("type = ",g).\
                     filter("meldttilbage =", True).\
+                    order("created").\
                     fetch(80)
             if len(ret["gaesterdict"][g]) %2 != 0:
                    ret["gaesterdict"][g].append("")
         self.generate("gaester.html",ret)
+
+class GaestDescr(BaseRequestHandler):
+    def get(self,id):
+        id = int(id)
+        g = Gaest.get(db.Key.from_path("Gaest",id))
+        self.generate("gaestdescr.html",{'g':g})
 
 
 class SengHandler(BaseRequestHandler):
@@ -114,6 +121,7 @@ class SengHandler(BaseRequestHandler):
 if __name__ == '__main__':
     application = webapp.WSGIApplication([
         ('/gaester',GaestList),
+        ('/gaest/(\d+)$',GaestDescr),
         ('/admin/gaest',GaestHandler),
         ('/admin/seng',SengHandler),
         ('/(.*)', MainHandler)], debug=True)

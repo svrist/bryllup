@@ -5,7 +5,10 @@
 {% for d in gaester %}<h2>{{d}}</h2>
   <table width="90%" style="border: solid #fff;">
     {% for p in gaesterdict|hash:d %}{%if forloop.counter0|divisibleby:"2"%}<tr>{%endif%}
-      <td width="50%">{{p.navn}}</td>{%if forloop.counter|divisibleby:"2"%}</tr>{%endif%}{% endfor %}
+      <td width="50%">
+        {% if p.descr %}<a href="/gaest/{{p.key.id}}">{%endif%}
+          {{p.navn}}{% if p.descr %}</a>{%endif%}
+      </td>{%if forloop.counter|divisibleby:"2"%}</tr>{%endif%}{% endfor %}
   </table><br/>{% endfor %}
      {% if users.is_current_user_admin %}<a href="/admin/gaest">Edit</a>{%endif%}  
 </div>

@@ -9,6 +9,7 @@ class Gaest(db.Model):
   vaerelse = db.BooleanProperty(default=False)
   betalt = db.BooleanProperty(default=False)
   type = db.StringProperty(required=True, default="Susanne",choices=['Susanne','S&oslash;ren','Venner'])
+  descr = db.TextProperty(default="")
 
 class Seng(db.Model):
   created = db.DateTimeProperty(auto_now_add=True)
