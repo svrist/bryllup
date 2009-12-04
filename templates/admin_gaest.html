@@ -1,5 +1,8 @@
 ﻿{% extends "index_admin.html" %}
-{% block content %}
+{% block "extrahead" %}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> 
+<script src="/static/javascrip/jquery.dimensions.min.js"></script>
+<script src="/static/javascrip/jquery.tooltip.min.js"></script>
 <style>
   .missing {
     color: #FF0000;
@@ -10,7 +13,13 @@
   .namehead {
     font-weight: bold;
   }
+  .withdescr {
+    text-decoration: underline;
+  }
 </style>
+
+{%endblock%}
+{% block content %}
 <div id="form">
 <form method="POST">
   <table>
@@ -31,7 +40,7 @@
   <tr>
     <td>
       {% if g.meldttilbage %}<span class="ok">*</span>{%endif%}</td>
-    <td>{{ g.navn }}</td>
+    <td {% if g.descr %}class="withdescr"{%endif%} title="{{ g.descr }}">{{ g.navn }}</td>
     <td>{% if g.vaerelse %}
       <span class="{% if g.betalt %}ok{%else%}missing{%endif%}">{{g.spaces}} Sengeplads(er)</span>{%endif%}</td>
     <td><a href="/admin/gaest?action=edit&id={{g.key.id}}">edit</a>|<a href="/admin/gaest?action=del&id={{g.key.id}}">x</a></td>
