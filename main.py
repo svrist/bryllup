@@ -69,7 +69,9 @@ class GaestHandler(BaseRequestHandler):
         vals['gaester'] = gaester
         self.generate("admin_gaest.html",vals)
     def post(self):
+        #data = dict([ (k,u
         form = GaestForm(data=self.request.POST)
+
         if self.request.get('_id'):
             id = int(self.request.get("_id"))
             g = Gaest.get(db.Key.from_path("Gaest",id))

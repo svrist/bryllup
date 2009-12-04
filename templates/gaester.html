@@ -1,7 +1,7 @@
-{% extends "index.html" %}
+﻿{% extends "index.html" %}
 {% block content %}
 <div id="fullcontent" style="width: 702px; min-height: 320px; float:right;" class="box">
-  <h1>G�steliste</h1>
+  <h1>Gæsteliste</h1>
 {% for d in gaester %}<h2>{{d}}</h2>
   <table width="90%" style="border: solid #fff;">
     {% for p in gaesterdict|hash:d %}{%if forloop.counter0|divisibleby:"2"%}<tr>{%endif%}
