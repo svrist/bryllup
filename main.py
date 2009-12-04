@@ -53,6 +53,7 @@ class GaestHandler(BaseRequestHandler):
         self.enforce_admin()
         vals = {}
         form = GaestForm()
+        normal = True
         action = self.request.get('action')
         if self.request.get("id"):
             id = int(self.request.get("id"))
@@ -61,12 +62,14 @@ class GaestHandler(BaseRequestHandler):
         if action == "edit":
             form = GaestForm(instance=g)
             vals['id'] = id
+            normal = False
         elif action == "del":
             g.delete()
 
         gaester = Gaest.all().order("type")
         vals['form'] = form
         vals['gaester'] = gaester
+        vals['normal'] = normal
         self.generate("admin_gaest.html",vals)
     def post(self):
         #data = dict([ (k,u
