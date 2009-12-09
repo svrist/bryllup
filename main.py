@@ -123,11 +123,17 @@ class SengHandler(BaseRequestHandler):
       f.save()
     self.redirect("/admin/seng")
 
+class AdminHandler(BaseRequestHandler):
+    def get(self):
+        self.enforce_admin()
+        self.redirect("/admin/gaest")
+
 if __name__ == '__main__':
     application = webapp.WSGIApplication([
         ('/gaester',GaestList),
         ('/gaest/(\d+)$',GaestDescr),
         ('/admin/gaest',GaestHandler),
         ('/admin/seng',SengHandler),
+        ('/admin/?$',AdminHandler),
         ('/(.*)', MainHandler)], debug=True)
     main(application)
