@@ -10,3 +10,7 @@ class GaestForm(djangoforms.ModelForm):
 class SengForm(djangoforms.ModelForm):
   class Meta:
     model = Seng
+
+class WishForm(djangoforms.ModelForm):
+    class Meta:
+        model = Wish

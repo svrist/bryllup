@@ -3,7 +3,10 @@
 <div id="fullcontent" class="box left" style="width: 505px; min-height: 280px">
   <h1>Ønsker</h1>
   <ul>
-    <li>Stole til køkken, 2.stk. Arne Jakobsen 3107. Sort</li>
+    {% for w in wishs %}
+    <li>{% if w.url %}<a href="{{w.url}}">{%endif%}{{w.name}}{%if w.url %}</a>{%endif%}
+    {%endfor%}
+    <!--<li>Stole til køkken, 2.stk. Arne Jakobsen 3107. Sort</li>
     <li>Spisestuestole. Ledo, hvid. (fåes i Ilva)</li>
     <li>Smørholder, porcelæn. Til rigtigt smør, ikke kærgården.</li>
     <li>KitchenAid Røremaskine</li>
@@ -18,9 +21,11 @@
     <li>Pastamaskine</li>
     <li>Lamper</li>
     <li>Bagesten</li>
-    <li>Kafferister, f.eks. en Iroast eller en Imex</li>
+    <li>Kafferister, f.eks. en Iroast eller en Imex</li>-->
   </ul>
   <h2>Gavekoordinator</h2>
   {% include "gavekoord.html" %}
+
+     {% if users.is_current_user_admin %}<a href="/admin/onsk">Edit</a>{%endif%}  
 </div>
 {% endblock %}

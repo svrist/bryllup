@@ -72,7 +72,6 @@ class GaestHandler(BaseRequestHandler):
         vals['normal'] = normal
         self.generate("admin_gaest.html",vals)
     def post(self):
-        #data = dict([ (k,u
         form = GaestForm(data=self.request.POST)
 
         if self.request.get('_id'):
@@ -112,7 +111,6 @@ class GaestDescr(BaseRequestHandler):
 
 
 class SengHandler(BaseRequestHandler):
-
   def get(self):
     f = SengForm(instance=Seng.get())
     self.generate("admin_seng.html",{'form':f})
@@ -123,6 +121,55 @@ class SengHandler(BaseRequestHandler):
       f.save()
     self.redirect("/admin/seng")
 
+class WishList(BaseRequestHandler):
+    def get(self):
+        tt = "class=\"current\""
+        l = {}
+        l['nav4'] = tt
+        l['wishs'] = Wish.all().fetch(1000)
+        self.generate("onsker.html",l)
+
+class WishListAdmin(BaseRequestHandler):
+    def get(self,form=None):
+        self.enforce_admin()
+        vals = {}
+        vals['wishs'] = Wish.all().order('position').fetch(1000)
+        if form is None:
+            if len(vals['wishs']) > 0:
+                m = max([ w.position for w in vals['wishs'] ])+1
+            else: 
+                m = 1
+            form = WishForm(initial={'position':m} )
+        action = self.request.get('action')
+        if self.request.get("id"):
+            id = int(self.request.get("id"))
+            g = Wish.get(db.Key.from_path("Wish",id))
+
+        if action == "edit":
+            form = WishForm(instance=g)
+            vals['id'] = id
+        elif action == "del":
+            g.delete()
+
+        vals['form'] = form
+        self.generate("admin_onsk.html",vals)
+
+    def post(self):
+        if self.request.get('_id'):
+            id = int(self.request.get("_id"))
+            w = Wish.get(db.Key.from_path("Wish",id))
+            form = WishForm(data=self.request.POST,instance=w)
+        else:
+            form = WishForm(data=self.request.POST)
+
+        if form.is_valid():
+            form.save()
+            self.redirect("/admin/onsk")
+        else:
+            self.get(form)
+
+
+
 class AdminHandler(BaseRequestHandler):
     def get(self):
         self.enforce_admin()
@@ -131,9 +178,11 @@ class AdminHandler(BaseRequestHandler):
 if __name__ == '__main__':
     application = webapp.WSGIApplication([
         ('/gaester',GaestList),
+        ('/onsker',WishList),
         ('/gaest/(\d+)$',GaestDescr),
         ('/admin/gaest',GaestHandler),
         ('/admin/seng',SengHandler),
+        ('/admin/onsk',WishListAdmin),
         ('/admin/?$',AdminHandler),
         ('/(.*)', MainHandler)], debug=True)
     main(application)

@@ -1,0 +1,24 @@
+﻿{% extends "index_admin.html" %}
+{% block content %}
+<div id="form">
+<form method="POST">
+  <table>
+    {{ form }}
+    <tr><td colspan="2">
+        {% if id %}<input type="hidden" name="_id" value="{{id}}" />{%endif%}
+        <input type="submit"></td></tr>
+  </table>
+</form>
+</div>
+<div id="list">
+  <table border="1" cellpadding="3">
+  {% for w in wishs %}
+  <tr>
+    <td>{{w.position}}</td><td>{{ w.name }}{%if w.url%}[{{w.url}}]{%endif%}</td>
+    <td><a href="/admin/onsk?action=edit&id={{w.key.id}}">edit</a>|<a href="/admin/onsk?action=del&id={{w.key.id}}">x</a></td>
+ </tr>
+  {% endfor %}
+</ul>
+
+</div>
+{% endblock %}
