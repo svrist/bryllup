@@ -126,7 +126,7 @@ class WishList(BaseRequestHandler):
         tt = "class=\"current\""
         l = {}
         l['nav4'] = tt
-        l['wishs'] = Wish.all().fetch(1000)
+        l['wishs'] = Wish.all().order('position').fetch(1000)
         self.generate("onsker.html",l)
 
 class WishListAdmin(BaseRequestHandler):
