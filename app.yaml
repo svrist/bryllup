@@ -16,6 +16,12 @@ handlers:
   static_files: static/robot.txt
   upload: static/robot.txt
 
+- url: /robots.txt
+  static_files: static/robot.txt
+  upload: static/robot.txt
+
+
+
 - url: /remote_api
   script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
   login: admin
