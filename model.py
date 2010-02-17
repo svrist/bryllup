@@ -12,6 +12,7 @@ class Gaest(BaseModel):
   betalt = db.BooleanProperty(default=False)
   type = db.StringProperty(required=True, default="Susanne",choices=['Susanne','S&oslash;ren','Venner'])
   descr = db.TextProperty(default="")
+  email = db.EmailProperty()
 
 class Seng(BaseModel):
   double=db.IntegerProperty(required=True,default=18)
