@@ -55,22 +55,25 @@ class GaestHandler(BaseRequestHandler):
         form = GaestForm()
         normal = True
         action = self.request.get('action')
+        template = "admin_gaest.html"
         if self.request.get("id"):
             id = int(self.request.get("id"))
             g = Gaest.get(db.Key.from_path("Gaest",id))
-
         if action == "edit":
             form = GaestForm(instance=g)
             vals['id'] = id
             normal = False
         elif action == "del":
             g.delete()
+        elif action == "email":
+            template = "admin_email.html"
+
 
         gaester = Gaest.all().order("type")
         vals['form'] = form
         vals['gaester'] = gaester
         vals['normal'] = normal
-        self.generate("admin_gaest.html",vals)
+        self.generate(template,vals)
     def post(self):
         form = GaestForm(data=self.request.POST)
 
@@ -181,6 +184,7 @@ if __name__ == '__main__':
         ('/onsker',WishList),
         ('/gaest/(\d+)$',GaestDescr),
         ('/admin/gaest',GaestHandler),
+        ('/admin/gaest/email',GaestHandler),
         ('/admin/seng',SengHandler),
         ('/admin/onsk',WishListAdmin),
         ('/admin/?$',AdminHandler),

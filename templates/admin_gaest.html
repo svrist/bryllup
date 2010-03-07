@@ -1,8 +1,8 @@
 ﻿{% extends "index_admin.html" %}
 {% block extrahead %}
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> 
-<script src="/static/javascrip/jquery.dimensions.min.js"></script>
-<script src="/static/javascrip/jquery.tooltip.min.js"></script>
+<script src="/static/javascript/jquery.dimensions.min.js"></script>
+<script src="/static/javascript/jquery.tooltip.min.js"></script>
 <script>
 $(document).ready(function() {
  // hides the slickbox as soon as the DOM is ready
@@ -47,6 +47,7 @@ $(document).ready(function() {
 {%endblock%}
 {% block content %}
 {% if normal %}<a href="javascript:void" id="form-show">Tilføj gæst</a>{%endif%}
+{% if normal %}<a href="/admin/gaest?action=email" >Email liste</a>{%endif%}
 <div id="form">
 {% if normal %}<a href="javascript:void" id="form-hide">Luk</a>{%endif%}
 <form method="POST">
