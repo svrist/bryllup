@@ -1,0 +1,10 @@
+{% extends "index_admin.html" %}
+{% block content %}
+<blockquote>
+{% for g in gaester %}
+{% if g.email %}
+{{g.email}},
+{% endif %}
+{%endfor%}
+</blockquote>
+{% endblock %}
