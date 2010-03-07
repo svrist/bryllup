@@ -1,6 +1,6 @@
 ﻿{% extends "index_admin.html" %}
 {% block extrahead %}
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script> 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> 
 <script src="/static/javascript/jquery.dimensions.min.js"></script>
 <script src="/static/javascript/jquery.tooltip.min.js"></script>
 <script>
@@ -24,9 +24,19 @@ $(document).ready(function() {
     $('#sform').toggle(400);
     return false;
   });
+  $("td.withdescr *").tooltip({showBody: ". "});
 });
 </script>
 <style>
+  #tooltip {
+    position: absolute;
+    z-index: 3000;
+    border: 1px solid #111;
+    background-color: #eee;
+    padding: 5px;
+    opacity: 0.85;
+  }
+  #tooltip h3, #tooltip div { margin: 0; }
   .missing {
     color: #FF0000;
   }
@@ -69,15 +79,15 @@ $(document).ready(function() {
   <tr>
     <td>
       {% if g.meldttilbage %}<span class="ok">*</span>{%endif%}</td>
-    <td {% if g.descr %}class="withdescr"{%endif%} title="{{ g.descr }}">
-{%if g.descr%}<a href="/gaest/{{g.key.id}}" target="_blank">{%endif%}{{ g.navn }}
+    <td {% if g.descr %}class="withdescr"{%endif%} ><!-- title="{{ g.descr }}">-->
+      {%if g.descr %}<a href="/gaest/{{g.key.id}}" target="_blank" id="wd" title="{{ g.descr }}">{%endif%}{{ g.navn }}
 {%if g.descr%}</a>{%endif%}</td>
      <td>{% if g.vaerelse %}
       <span class="{% if g.betalt %}ok{%else%}missing{%endif%}">{{g.spaces}} Sengeplads(er)</span>{%endif%}</td>
     <td><a href="/admin/gaest?action=edit&id={{g.key.id}}">edit</a>|<a href="/admin/gaest?action=del&id={{g.key.id}}">x</a></td>
  </tr>
   {% endfor %}
-</ul>
+</table>
 
 </div>
 {% endblock %}
