@@ -21,7 +21,7 @@ from base_request_handler import BaseRequestHandler,main
 from google.appengine.ext import webapp
 from form import *
 
-webapp.template.register_template_library('django_hack')
+webapp.template.register_template_library('tags.django_hack')
 
 
 class MainHandler(BaseRequestHandler):
@@ -140,7 +140,7 @@ class WishListAdmin(BaseRequestHandler):
         if form is None:
             if len(vals['wishs']) > 0:
                 m = max([ w.position for w in vals['wishs'] ])+1
-            else: 
+            else:
                 m = 1
             form = WishForm(initial={'position':m} )
         action = self.request.get('action')

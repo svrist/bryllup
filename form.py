@@ -1,4 +1,4 @@
-from google.appengine.ext.db import djangoforms
+import djangoforms
 
 from model import *
 

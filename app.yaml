@@ -1,7 +1,12 @@
-application: vristbryllup
+application: vristbryllup-hrd
 version: 1
-runtime: python
+runtime: python27
 api_version: 1
+threadsafe: no
+
+libraries:
+- name: django
+  version: latest
 
 handlers:
 - url: /static
@@ -12,6 +17,16 @@ handlers:
   upload: static/favicon.ico
   mime_type: image/x-icon
 
+- url: /apple-touch-icon-precomposed.png
+  static_files: static/images/apple-touch-icon-precomposed.png
+  upload: static/apple-touch-icon-precomposed.png
+  mime_type: image/png
+
+- url: /apple-touch-icon.png
+  static_files: static/images/apple-touch-icon.png
+  upload: static/apple-touch-icon.png
+  mime_type: image/png
+
 - url: /robot.txt
   static_files: static/robot.txt
   upload: static/robot.txt
@@ -19,8 +34,6 @@ handlers:
 - url: /robots.txt
   static_files: static/robot.txt
   upload: static/robot.txt
-
-
 
 - url: /remote_api
   script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
